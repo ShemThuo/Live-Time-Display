@@ -80,6 +80,26 @@
             letter-spacing: 0.08em;
         }
 
+        #toggleFormatBtn {
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid #38bdf8;
+            background: linear-gradient(90deg, #38bdf8 0%, #c084fc 100%);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(56, 189, 248, 0.15);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        #toggleFormatBtn:hover, #toggleFormatBtn:focus {
+            background: linear-gradient(90deg, #c084fc 0%, #38bdf8 100%);
+            transform: scale(1.05);
+            outline: none;
+        }
 
         @keyframes pulse {
             0%, 100% {
