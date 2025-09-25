@@ -80,6 +80,7 @@
             letter-spacing: 0.08em;
         }
 
+
         @keyframes pulse {
             0%, 100% {
                 filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
@@ -107,28 +108,36 @@
     </div>
 
     <script>
+        let is24Hour = true;
+
         function updateClock() {
             const now = new Date();
 
             const timeString = now.toLocaleTimeString('en-US', {
-                hour12: false, 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
-        });
-            const dateString = now.toLocaleDateString('en-US', {
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-        });
+                hour12: !is24Hour,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
 
-        document.getElementById('timeDisplay').textContent = timeString;
-        document.getElementById('dateDisplay').textContent = dateString;
+            const dateString = now.toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            document.getElementById('timeDisplay').textContent = timeString;
+            document.getElementById('dateDisplay').textContent = dateString;
+            document.getElementById('formatIndicator').textContent = is24Hour ? '24-Hour' : '12-Hour';
         }
 
+        document.getElementById('toggleFormatBtn').addEventListener('click', function() {
+            is24Hour = !is24Hour;
+            updateClock();
+        });
+
         updateClock();
-        
         setInterval(updateClock, 1000);
     </script>
 </body>
